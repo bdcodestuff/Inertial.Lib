@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Inertial.Lib</name></assembly>
+<members>
+<member name="M:Inertial.Lib.Helpers.cacheListDecoder``1">
+<summary>
+ Assumes cached data is stored in a Map format of [&quot;Choice2Of2&quot;, [ { field.. : value.. }, { field2.. : value2.. } ] ]  
+</summary>
+</member>
+<member name="M:Inertial.Lib.Helpers.cacheObjectDecoder``1">
+<summary>
+ Assumes cached data is stored in a Map format of [&quot;Choice2Of2&quot;, { field.. : value.. } ]
+</summary>
+</member>
+<member name="M:Inertial.Lib.Helpers.cacheResultDecoder``1">
+<summary>
+ Assumes cached data is stored in a Map format of [&quot;Choice2Of2&quot;, [&quot;Ok&quot;, { field.. : value.. } ] ]
+</summary>
+</member>
+</members>
+</doc>

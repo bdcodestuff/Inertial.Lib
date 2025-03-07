@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "9L4Fp0kjHqE=",
+  "success": true,
+  "projectFilePath": "/Users/bdmacrie/Projects/Inertial.Lib/Inertial.Lib.fsproj",
+  "expectedPackageFiles": [
+    "/Users/bdmacrie/.nuget/packages/fable.core/4.1.0/fable.core.4.1.0.nupkg.sha512",
+    "/Users/bdmacrie/.nuget/packages/fsharp.core/9.0.101/fsharp.core.9.0.101.nupkg.sha512",
+    "/Users/bdmacrie/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/bdmacrie/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/Users/bdmacrie/.nuget/packages/thoth.json/10.4.1/thoth.json.10.4.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,139 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "Inertial.Lib/1.0.0": {
+        "dependencies": {
+          "FSharp.Core": "9.0.101",
+          "NETStandard.Library": "2.0.3",
+          "Thoth.Json": "10.4.1"
+        },
+        "runtime": {
+          "Inertial.Lib.dll": {}
+        }
+      },
+      "Fable.Core/4.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Fable.Core.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "FSharp.Core/9.0.101": {
+        "runtime": {
+          "lib/netstandard2.0/FSharp.Core.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.1.124.60203"
+          }
+        },
+        "resources": {
+          "lib/netstandard2.0/cs/FSharp.Core.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard2.0/de/FSharp.Core.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard2.0/es/FSharp.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard2.0/fr/FSharp.Core.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard2.0/it/FSharp.Core.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard2.0/ja/FSharp.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard2.0/ko/FSharp.Core.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard2.0/pl/FSharp.Core.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard2.0/pt-BR/FSharp.Core.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard2.0/ru/FSharp.Core.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard2.0/tr/FSharp.Core.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard2.0/zh-Hans/FSharp.Core.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard2.0/zh-Hant/FSharp.Core.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Thoth.Json/10.4.1": {
+        "dependencies": {
+          "FSharp.Core": "9.0.101",
+          "Fable.Core": "4.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Thoth.Json.dll": {
+            "assemblyVersion": "10.4.1.0",
+            "fileVersion": "10.4.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Inertial.Lib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Fable.Core/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NISAbAVGEcvH2s+vHLSOCzh98xMYx4aIadWacQdWPcQLploxpSQXLEe9SeszUBhbHa73KMiKREsH4/W3q4A4iA==",
+      "path": "fable.core/4.1.0",
+      "hashPath": "fable.core.4.1.0.nupkg.sha512"
+    },
+    "FSharp.Core/9.0.101": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3/YR1SDWFA+Ojx9HiBwND+0UR8ZWoeZfkhD0DWAPCDdr/YI+CyFkArmMGzGSyPXeYtjG0sy0emzfyNwjt7zhig==",
+      "path": "fsharp.core/9.0.101",
+      "hashPath": "fsharp.core.9.0.101.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Thoth.Json/10.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hs76/uO+gHhvnlaxQDqbpUX2Y0L97ilEZ1Nx+LA4D6N7fuAYJmNwQWZB/KQLBE7wIeWK5oXMFHCuKdImSrF1Bg==",
+      "path": "thoth.json/10.4.1",
+      "hashPath": "thoth.json.10.4.1.nupkg.sha512"
+    }
+  }
+}
