@@ -77,29 +77,45 @@ module Helpers =
                 
         decoder
         
-        
-    let asyncChoice3Decoder<'T> (placeholder : Async<Result<'T,string>>) (decoder: Decoder<'T>) =
-            let decoder =                
-                let decodeChoice1 =
-                      Decode.field "Choice1Of3" (emptyDecoder |> Decode.andThen (fun _ ->  Decode.succeed (Choice1Of3 placeholder) ))
-                
-                let decodeChoice2 =
-                      Decode.field "Choice2Of3" (resultDecoder decoder) |> Decode.map Choice2Of3
-                
-                let decodeChoice3 =
-                      Decode.field "Choice3Of3" (Decode.string) |> Decode.map Choice3Of3
-
-                Decode.oneOf [ decodeChoice1 ; decodeChoice2 ; decodeChoice3 ]
-                
-            decoder
-         
-    let asyncChoice2Decoder<'T> (placeholder : Async<Result<'T,string>>) (decoder: Decoder<'T>) =
-        let decoder =                
+    let asyncChoice2OptionDecoder<'T> (decoder: Decoder<'T>) =
+        let decoder =
+            let returnOption : Option<'T> = None
+            
             let decodeChoice1 =
-                  Decode.field "Choice1Of2" (emptyDecoder |> Decode.andThen (fun _ ->  Decode.succeed (Choice1Of2 placeholder) ))
+                  Decode.field "Choice1Of2" (emptyDecoder |> Decode.andThen (fun _ ->  Decode.succeed (Choice1Of2 <| async { return returnOption }  ) ))
             
             let decodeChoice2 =
-                  Decode.field "Choice2Of2" (resultDecoder decoder) |> Decode.map Choice2Of2
+                  Decode.field "Choice2Of2" (Decode.option decoder) |> Decode.map Choice2Of2
+            
+
+            Decode.oneOf [ decodeChoice1 ; decodeChoice2 ]
+            
+        decoder
+        
+    let asyncChoice2ListDecoder<'T> (decoder: Decoder<'T>) =
+        let decoder =                
+            let returnList : List<'T> = []
+            
+            let decodeChoice1 =
+                  Decode.field "Choice1Of2" (emptyDecoder |> Decode.andThen (fun _ ->  Decode.succeed (Choice1Of2 <| async { return returnList }  ) ))
+            
+            let decodeChoice2 =
+                  Decode.field "Choice2Of2" (Decode.list decoder) |> Decode.map Choice2Of2
+            
+
+            Decode.oneOf [ decodeChoice1 ; decodeChoice2 ]
+            
+        decoder
+         
+    let asyncChoice2ResultListDecoder<'T> (decoder: Decoder<'T>) =
+        let decoder =                
+            let returnResult : Result<List<'T>,string> = Ok []
+            
+            let decodeChoice1 =
+                  Decode.field "Choice1Of2" (emptyDecoder |> Decode.andThen (fun _ ->  Decode.succeed (Choice1Of2 <| async { return returnResult }  ) ))
+            
+            let decodeChoice2 =
+                  Decode.field "Choice2Of2" (Decode.list (resultDecoder decoder)) |> Decode.map Choice2Of2
             
 
             Decode.oneOf [ decodeChoice1 ; decodeChoice2 ]

@@ -9,3 +9,15 @@
 /Users/bdmacrie/Projects/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.dll
 /Users/bdmacrie/Projects/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.xml
 /Users/bdmacrie/Projects/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.pdb
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/bin/Debug/netstandard2.0/Inertial.Lib.deps.json
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/bin/Debug/netstandard2.0/Inertial.Lib.dll
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/bin/Debug/netstandard2.0/Inertial.Lib.pdb
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/bin/Debug/netstandard2.0/Inertial.Lib.xml
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.fsproj.AssemblyReference.cache
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.AssemblyInfoInputs.cache
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.AssemblyInfo.fs
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.fsproj.CoreCompileInputs.cache
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.sourcelink.json
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.dll
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.xml
+/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/obj/Debug/netstandard2.0/Inertial.Lib.pdb

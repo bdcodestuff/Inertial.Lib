@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Inertial.Lib/1.0.0": {
+      "Inertial.Lib/0.1.1": {
         "dependencies": {
           "FSharp.Core": "9.0.101",
           "NETStandard.Library": "2.0.3",
@@ -95,7 +95,7 @@
     }
   },
   "libraries": {
-    "Inertial.Lib/1.0.0": {
+    "Inertial.Lib/0.1.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

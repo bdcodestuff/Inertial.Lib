@@ -356,13 +356,13 @@
     "/Users/bdmacrie/.nuget/packages/": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.1.1",
     "restore": {
-      "projectUniqueName": "/Users/bdmacrie/Projects/Inertial.Lib/Inertial.Lib.fsproj",
+      "projectUniqueName": "/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/Inertial.Lib.fsproj",
       "projectName": "Inertial.Lib",
-      "projectPath": "/Users/bdmacrie/Projects/Inertial.Lib/Inertial.Lib.fsproj",
+      "projectPath": "/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/Inertial.Lib.fsproj",
       "packagesPath": "/Users/bdmacrie/.nuget/packages/",
-      "outputPath": "/Users/bdmacrie/Projects/Inertial.Lib/obj/",
+      "outputPath": "/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/bdmacrie/.nuget/NuGet/NuGet.Config"
