@@ -24,7 +24,7 @@ module Reflection =
             let parts = string.Split('[')
             if parts |> Array.isEmpty then None
             else
-               if parts[0] = "Microsoft.FSharp.Core.FSharpChoice`2" then Some z else None
+               if parts[0] = "Inertial.Lib.Types.AsyncData`1" then Some z else None
             )
         |> Array.choose id
         |> Array.map (_.Name)

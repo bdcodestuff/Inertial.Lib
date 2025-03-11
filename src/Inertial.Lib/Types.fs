@@ -6,6 +6,32 @@ open System
 [<AutoOpen>]
 module Types =
 
+  type AsyncChoice<'T> = Choice<Async<'T>,'T>
+  type AsyncDataDecoder<'T> =
+    | Choice2OptionDecoder of Decoder<AsyncChoice<Option<'T>>>
+    | Choice2OptionListDecoder of Decoder<AsyncChoice<Option<'T list>>>
+    | Choice2ResultListDecoder of Decoder<AsyncChoice<Result<'T list,string>>>
+    | Choice2ListDecoder of Decoder<AsyncChoice<List<'T>>>
+  
+  type AsyncDataName=
+    | Choice2Option
+    | Choice2OptionList
+    | Choice2ResultList
+    | Choice2List
+    member x.ToName() =
+      match x with
+      | Choice2Option -> "Choice2Option"
+      | Choice2OptionList -> "Choice2OptionList" 
+      | Choice2ResultList -> "Choice2ResultList"
+      | Choice2List -> "Choice2List"
+  
+  type AsyncData<'T> =
+    | Choice2Option of AsyncChoice<Option<'T>> //AsyncChoice<Option<'T>>
+    | Choice2OptionList of AsyncChoice<Option<'T list>> //AsyncChoice<Option<'T list>>
+    | Choice2ResultList of AsyncChoice<Result<'T list,string>> //AsyncChoice<Result<'T list,string>>
+    | Choice2List of AsyncChoice<'T list> //AsyncChoice<List<'T>> 
+  
+  
   type ScrollPosition =
       | ResetScroll
       | KeepVerticalScroll of string
@@ -54,6 +80,7 @@ module Types =
 
   type CacheRetrieval =
     | CheckForCached of string array
+    | CheckForAll
     | SkipCache // full reload
     member x.ToHeader() =
       match x with
@@ -61,6 +88,7 @@ module Types =
         let arrStr = arr |> Array.reduce (fun x y -> $"{x},{y}")
         $"CheckForCached {arrStr}"
       | SkipCache -> "SkipCache"
+      | CheckForAll -> "CheckForAll"
     static member decoder =
       let decodeSkipCache =
           Decode.string
@@ -68,11 +96,17 @@ module Types =
             (function
               | "SkipCache" -> Decode.succeed SkipCache
               | a -> Decode.fail $"Cannot decode Cache Retrieval from given input: {a}")
+      let decodeCheckForAll =
+          Decode.string
+            |> Decode.andThen
+            (function
+              | "CheckForAll" -> Decode.succeed CheckForAll
+              | a -> Decode.fail $"Cannot decode Cache Retrieval from given input: {a}")     
       
       let decodeCheckForCached =
           Decode.field "CheckForCached" (Decode.array Decode.string) |> Decode.map CheckForCached
 
-      Decode.oneOf [ decodeSkipCache; decodeCheckForCached ]
+      Decode.oneOf [ decodeSkipCache; decodeCheckForAll; decodeCheckForCached ]
 
   type ProgressBar =
     | ShowProgressBar
@@ -166,8 +200,8 @@ module Types =
     {
       shouldReload : bool
       propsToEval : PropsToEval option
-      cacheStorage : CacheStorage option
-      cacheRetrieval : CacheRetrieval option
+      cacheStorage : CacheStorage
+      cacheRetrieval : CacheRetrieval
     }
     
   type PageObj<'Props,'Shared> =
@@ -193,7 +227,7 @@ module Types =
         title = ""
         props = None
         refreshOnBack = false
-        reloadOnMount = { shouldReload = false; propsToEval = None ; cacheStorage = None ; cacheRetrieval = None }
+        reloadOnMount = { shouldReload = false; propsToEval = None ; cacheStorage = CacheStorage.StoreNone ; cacheRetrieval = CacheRetrieval.SkipCache }
         realTime = true
         shared = None
         urlComponentMap = [||]
@@ -229,8 +263,8 @@ module Types =
                     { 
                       shouldReload = get.Required.Field "shouldReload" Decode.bool 
                       propsToEval = get.Optional.Field "propsToEval" PropsToEval.decoder
-                      cacheStorage = get.Optional.Field "cacheStorage" CacheStorage.decoder
-                      cacheRetrieval = get.Optional.Field "cacheRetrieval" CacheRetrieval.decoder
+                      cacheStorage = get.Required.Field "cacheStorage" CacheStorage.decoder
+                      cacheRetrieval = get.Required.Field "cacheRetrieval" CacheRetrieval.decoder
                     }) ) // Decode.bool PropsToEval.decoder)
             realTime = get.Required.Field "realTime" Decode.bool
             props = get.Required.Field "props" (decodeProps componentName)
@@ -239,3 +273,9 @@ module Types =
           }
         )
       Decode.fromString decoder json
+
+  // type IPage =
+  //   static abstract fields: string array
+  //   abstract toMap: string array option -> (string * obj) array
+  //   abstract resolve: Map<string,obj> -> IPage
+  //   static abstract decoder: (string -> obj -> Result<IPage,DecoderError>)

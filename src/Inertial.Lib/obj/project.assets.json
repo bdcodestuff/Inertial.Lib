@@ -356,7 +356,7 @@
     "/Users/bdmacrie/.nuget/packages/": {}
   },
   "project": {
-    "version": "0.1.1",
+    "version": "0.1.2",
     "restore": {
       "projectUniqueName": "/Users/bdmacrie/Projects/Inertial.Lib/src/Inertial.Lib/Inertial.Lib.fsproj",
       "projectName": "Inertial.Lib",
