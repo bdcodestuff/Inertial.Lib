@@ -5,7 +5,10 @@ open System
 
 [<AutoOpen>]
 module Types =
-
+ 
+  type InertialFnDecoder<'Props> = string -> Decoder<'Props>
+  type InertialDecoder<'Shared> = Decoder<'Shared>
+  
   type AsyncChoice<'T> = Choice<Async<'T>,'T>
   type AsyncDataDecoder<'T> =
     | Choice2OptionDecoder of Decoder<AsyncChoice<Option<'T>>>
@@ -273,9 +276,3 @@ module Types =
           }
         )
       Decode.fromString decoder json
-
-  // type IPage =
-  //   static abstract fields: string array
-  //   abstract toMap: string array option -> (string * obj) array
-  //   abstract resolve: Map<string,obj> -> IPage
-  //   static abstract decoder: (string -> obj -> Result<IPage,DecoderError>)

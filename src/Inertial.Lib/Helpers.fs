@@ -5,6 +5,8 @@ open Thoth.Json
 module Helpers =
        
     
+    let mapDecoderToOpt decoder = decoder |> Decode.map Some
+    
     let asyncDataDecoder<'T> =
         Decode.index 0 Decode.string
         |> Decode.andThen (fun result ->
@@ -54,61 +56,61 @@ module Helpers =
         )
     
     /// Assumes cached data is stored in a Map format of ["Choice2Of2", ["Ok", { field.. : value.. } ] ]
-    let cacheResultDecoder<'T> =
-        Decode.index 0 Decode.string
-        |> Decode.andThen (fun result ->
-            match result with
-            | "Choice2Of2" -> 
-              Decode.index 1 (
-                  Decode.index 0 Decode.string |> Decode.andThen (fun inner ->
-                    match inner with
-                    | "Ok" ->
-                      Decode.index 1 Decode.value |>
-                        Decode.andThen (fun result ->
-                            Decode.succeed <| (Choice2Of2 (Ok result))
-                          )
-                      
-                    | invalid -> Decode.fail $"""Error decoding cached value, got: "%s{invalid}"""
-                    )
-                
-                )
-
-            | invalid ->
-              Decode.fail $"""Error decoding cached value, got: "%s{invalid}""")
-    
-    /// Assumes cached data is stored in a Map format of ["Choice2Of2", { field.. : value.. } ]
-    let cacheObjectDecoder<'T> =
-      Decode.index 0 Decode.string
-      |> Decode.andThen (fun result ->
-          match result with
-          | "Choice2Of2" -> 
-            Decode.index 1 Decode.value |>
-              Decode.andThen (fun result ->
-                //printfn $"result: {result}"
-                  Decode.succeed <| (Choice2Of2 result)
-                )
-
-          | invalid ->
-            Decode.fail $"""Error decoding cached value, got: "%s{invalid}""")
-    
-    /// Assumes cached data is stored in a Map format of ["Choice2Of2", [ { field.. : value.. }, { field2.. : value2.. } ] ]  
-    let cacheListDecoder<'T> =
-      Decode.index 0 Decode.string
-      |> Decode.andThen (fun result ->
-          match result with
-          | "Choice2Of2" -> 
-            // Decode.index 1 Decode.value |>
-            //   Decode.andThen (fun result ->
-            //     //printfn $"result: {result}"
-            //       Decode.succeed <| ListOfObjects (Choice2Of2 <| Decode.list result)
-            //     )
-            Decode.index 1 (Decode.list Decode.value) |>
-              Decode.andThen (fun list ->
-                  Decode.succeed <| (Choice2Of2 list)
-                )
-
-          | invalid ->
-            Decode.fail $"""Error decoding cached value, got: "%s{invalid}""")
+    // let cacheResultDecoder<'T> =
+    //     Decode.index 0 Decode.string
+    //     |> Decode.andThen (fun result ->
+    //         match result with
+    //         | "Choice2Of2" -> 
+    //           Decode.index 1 (
+    //               Decode.index 0 Decode.string |> Decode.andThen (fun inner ->
+    //                 match inner with
+    //                 | "Ok" ->
+    //                   Decode.index 1 Decode.value |>
+    //                     Decode.andThen (fun result ->
+    //                         Decode.succeed <| (Choice2Of2 (Ok result))
+    //                       )
+    //                   
+    //                 | invalid -> Decode.fail $"""Error decoding cached value, got: "%s{invalid}"""
+    //                 )
+    //             
+    //             )
+    //
+    //         | invalid ->
+    //           Decode.fail $"""Error decoding cached value, got: "%s{invalid}""")
+    //
+    // /// Assumes cached data is stored in a Map format of ["Choice2Of2", { field.. : value.. } ]
+    // let cacheObjectDecoder<'T> =
+    //   Decode.index 0 Decode.string
+    //   |> Decode.andThen (fun result ->
+    //       match result with
+    //       | "Choice2Of2" -> 
+    //         Decode.index 1 Decode.value |>
+    //           Decode.andThen (fun result ->
+    //             //printfn $"result: {result}"
+    //               Decode.succeed <| (Choice2Of2 result)
+    //             )
+    //
+    //       | invalid ->
+    //         Decode.fail $"""Error decoding cached value, got: "%s{invalid}""")
+    //
+    // /// Assumes cached data is stored in a Map format of ["Choice2Of2", [ { field.. : value.. }, { field2.. : value2.. } ] ]  
+    // let cacheListDecoder<'T> =
+    //   Decode.index 0 Decode.string
+    //   |> Decode.andThen (fun result ->
+    //       match result with
+    //       | "Choice2Of2" -> 
+    //         // Decode.index 1 Decode.value |>
+    //         //   Decode.andThen (fun result ->
+    //         //     //printfn $"result: {result}"
+    //         //       Decode.succeed <| ListOfObjects (Choice2Of2 <| Decode.list result)
+    //         //     )
+    //         Decode.index 1 (Decode.list Decode.value) |>
+    //           Decode.andThen (fun list ->
+    //               Decode.succeed <| (Choice2Of2 list)
+    //             )
+    //
+    //       | invalid ->
+    //         Decode.fail $"""Error decoding cached value, got: "%s{invalid}""")
 
     
     let emptyDecoder : Decoder<obj> =
@@ -232,4 +234,11 @@ module Helpers =
             decodeChoice2List ; decodeChoice2Option ; decodeChoice2OptionList; decodeChoice2ResultList
         ]
 
+    let decodeCacheFromString stored = Decode.fromString asyncDataDecoder stored
+    
+    let decodeSSEFromString json = Decode.fromString InertialSSEEvent.decoder json
+    
+    let encodeBodyContent (dataMap: Map<string,obj>) = Encode.Auto.toString(4,dataMap)
+    
+    let encodeCacheObj (cacheObj: obj) = Encode.Auto.toString cacheObj
         

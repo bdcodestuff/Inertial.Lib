@@ -9,10 +9,10 @@ open System.Reflection
 
 [<assembly: System.Reflection.AssemblyCompanyAttribute("Bryan Macrie")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
-[<assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.2.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.2+c36bc1206b1e8470880cb8d18e7577f987acbce7")>]
+[<assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.3.0")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.3+f54a509b91094fcffd6535f694fd68751b2509b6")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("Inertial.Lib")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("Inertial.Lib")>]
-[<assembly: System.Reflection.AssemblyVersionAttribute("0.1.2.0")>]
+[<assembly: System.Reflection.AssemblyVersionAttribute("0.1.3.0")>]
 [<assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/bdcodestuff/Inertial.Lib")>]
 do()
